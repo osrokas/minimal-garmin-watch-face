@@ -1,4 +1,4 @@
-internal-mir
-mir
-gen
-bin
+internal-mir/
+mir/
+gen/
+bin/
