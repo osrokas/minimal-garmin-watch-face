@@ -1,0 +1,309 @@
+[ @file = "C:\dev\first-garmin-app\WatchFaceFirst\source\WatchFaceFirstView.mc"; @line = 1; @symbol_importdef<0> = [Toybox,1,7,13]; @symbol_importdef<1> = [Graphics,1,14,22]; ]
+import Toybox.Graphics;
+[ @file = "C:\dev\first-garmin-app\WatchFaceFirst\source\WatchFaceFirstView.mc"; @line = 2; @symbol_importdef<0> = [Toybox,2,7,13]; @symbol_importdef<1> = [Lang,2,14,18]; ]
+import Toybox.Lang;
+[ @file = "C:\dev\first-garmin-app\WatchFaceFirst\source\WatchFaceFirstView.mc"; @line = 3; @symbol_importdef<0> = [Toybox,3,7,13]; @symbol_importdef<1> = [System,3,14,20]; ]
+import Toybox.System;
+[ @file = "C:\dev\first-garmin-app\WatchFaceFirst\source\WatchFaceFirstView.mc"; @line = 4; @symbol_importdef<0> = [Toybox,4,7,13]; @symbol_importdef<1> = [WatchUi,4,14,21]; ]
+import Toybox.WatchUi;
+[ @file = "C:\dev\first-garmin-app\WatchFaceFirst\source\WatchFaceFirstView.mc"; @line = 5; @symbol_importdef<0> = [Toybox,5,7,13]; @symbol_importdef<1> = [Activity,5,14,22]; ]
+import Toybox.Activity;
+[ @file = "C:\dev\first-garmin-app\WatchFaceFirst\source\WatchFaceFirstView.mc"; @line = 7; @symbol_functiondef = [batteryStatus,7,9,22]; @symbol_return<0> = [Integer,7,28,35]; ]
+function batteryStatus() as Integer {
+C__dev_first_garmin_app_WatchFaceFirst_source_WatchFaceFirstView_mc_7_36_10_0_start:
+[ "C:\dev\first-garmin-app\WatchFaceFirst\source\WatchFaceFirstView.mc" 8 4 ]
+    [ "C__dev_first_garmin_app_WatchFaceFirst_source_WatchFaceFirstView_mc_7_36_10_0_start" "C__dev_first_garmin_app_WatchFaceFirst_source_WatchFaceFirstView_mc_7_36_10_0_stop" ]
+    %batteryLevel.1 = local;
+    symbol [ batteryLevel %batteryLevel.1 8 8 20 ];
+    symbol [ System %tmp.1 8 23 29 ];
+    %tmp.1 = getm $.Toybox.System;
+    symbol [ getSystemStats %tmp.2 8 30 44 ];
+    %tmp.2 = getv function %tmp.1 :getSystemStats;
+    %tmp.3 = invoke %tmp.1 %tmp.2();
+    symbol [ battery %tmp.4 8 47 54 ];
+    %tmp.4 = getv %tmp.3 :battery;
+    symbol [ toNumber %tmp.5 8 55 63 ];
+    %tmp.5 = getv function %tmp.4 :toNumber;
+    %tmp.6 = invoke %tmp.4 %tmp.5();
+    lputv %batteryLevel.1 %tmp.6;
+    symbol [ batteryLevel %batteryLevel.1 8 8 20 ];
+[ "C:\dev\first-garmin-app\WatchFaceFirst\source\WatchFaceFirstView.mc" 9 4 ]
+    %tmp.7 = lgetv %batteryLevel.1;
+    symbol [ batteryLevel %tmp.7 9 11 23 ];
+    ret %tmp.7;
+C__dev_first_garmin_app_WatchFaceFirst_source_WatchFaceFirstView_mc_7_36_10_0_stop:
+}
+[ @file = "C:\dev\first-garmin-app\WatchFaceFirst\source\WatchFaceFirstView.mc"; @line = 12; @symbol_functiondef = [getHeartRate,12,9,21]; @symbol_return<0> = [Number,12,27,33]; ]
+function getHeartRate() as Number {
+C__dev_first_garmin_app_WatchFaceFirst_source_WatchFaceFirstView_mc_12_34_18_0_start:
+[ "C:\dev\first-garmin-app\WatchFaceFirst\source\WatchFaceFirstView.mc" 13 4 ]
+    [ "C__dev_first_garmin_app_WatchFaceFirst_source_WatchFaceFirstView_mc_12_34_18_0_start" "C__dev_first_garmin_app_WatchFaceFirst_source_WatchFaceFirstView_mc_12_34_18_0_stop" ]
+    %heartRate.1 = local;
+    symbol [ heartRate %heartRate.1 13 8 17 ];
+    symbol [ Activity %tmp.1 13 20 28 ];
+    %tmp.1 = getm $.Toybox.Activity;
+    symbol [ getActivityInfo %tmp.2 13 29 44 ];
+    %tmp.2 = getv function %tmp.1 :getActivityInfo;
+    %tmp.3 = invoke %tmp.1 %tmp.2();
+    symbol [ currentHeartRate %tmp.4 13 47 63 ];
+    %tmp.4 = getv %tmp.3 :currentHeartRate;
+    lputv %heartRate.1 %tmp.4;
+    symbol [ heartRate %heartRate.1 13 8 17 ];
+[ "C:\dev\first-garmin-app\WatchFaceFirst\source\WatchFaceFirstView.mc" 14 4 ]
+C__dev_first_garmin_app_WatchFaceFirst_source_WatchFaceFirstView_mc_14_4_16_4_if_stmt:
+    %tmp.5 = lgetv %heartRate.1;
+    symbol [ heartRate %tmp.5 14 8 17 ];
+    %tmp.6 = null;
+    %tmp.7 = eq %tmp.5 %tmp.6;
+    bf %tmp.7 @C__dev_first_garmin_app_WatchFaceFirst_source_WatchFaceFirstView_mc_14_4_16_4_if_end;
+C__dev_first_garmin_app_WatchFaceFirst_source_WatchFaceFirstView_mc_14_4_16_4_if_true:
+C__dev_first_garmin_app_WatchFaceFirst_source_WatchFaceFirstView_mc_14_27_16_4_start:
+[ "C:\dev\first-garmin-app\WatchFaceFirst\source\WatchFaceFirstView.mc" 15 8 ]
+    %tmp.8 = 0;
+    lputv %heartRate.1 %tmp.8;
+    symbol [ heartRate %heartRate.1 15 8 17 ];
+C__dev_first_garmin_app_WatchFaceFirst_source_WatchFaceFirstView_mc_14_27_16_4_stop:
+    goto @C__dev_first_garmin_app_WatchFaceFirst_source_WatchFaceFirstView_mc_14_4_16_4_if_end;
+C__dev_first_garmin_app_WatchFaceFirst_source_WatchFaceFirstView_mc_14_4_16_4_if_end:
+[ "C:\dev\first-garmin-app\WatchFaceFirst\source\WatchFaceFirstView.mc" 17 4 ]
+    %tmp.9 = lgetv %heartRate.1;
+    symbol [ heartRate %tmp.9 17 11 20 ];
+    ret %tmp.9;
+C__dev_first_garmin_app_WatchFaceFirst_source_WatchFaceFirstView_mc_12_34_18_0_stop:
+}
+[ @file = "C:\dev\first-garmin-app\WatchFaceFirst\source\WatchFaceFirstView.mc"; @line = 21; @symbol_classdef = [WatchFaceFirstView,21,6,24]; @symbol_extends<0> = [WatchUi,21,33,40]; @symbol_extends<1> = [WatchFace,21,41,50]; ]
+class WatchFaceFirstView extends WatchUi.WatchFace {
+    [ @file = "C:\dev\first-garmin-app\WatchFaceFirst\source\WatchFaceFirstView.mc"; @line = 21; ]
+    <init> {
+    }
+    [ @file = "C:\dev\first-garmin-app\WatchFaceFirst\source\WatchFaceFirstView.mc"; @line = 21; ]
+    static
+    <init> {
+    }
+    [ @file = "C:\dev\first-garmin-app\WatchFaceFirst\source\WatchFaceFirstView.mc"; @line = 23; @symbol_functiondef = [initialize,23,13,23]; ]
+    function initialize() as Void {
+C__dev_first_garmin_app_WatchFaceFirst_source_WatchFaceFirstView_mc_23_26_25_4_start:
+[ "C:\dev\first-garmin-app\WatchFaceFirst\source\WatchFaceFirstView.mc" 24 8 ]
+        symbol [ WatchFace %tmp.2 24 8 17 ];
+        %tmp.2 = getv ? :WatchFace;
+        symbol [ initialize %tmp.3 24 18 28 ];
+        %tmp.3 = getv function %tmp.2 :initialize;
+        invoke %tmp.2 %tmp.3();
+C__dev_first_garmin_app_WatchFaceFirst_source_WatchFaceFirstView_mc_23_26_25_4_stop:
+    }
+    [ @file = "C:\dev\first-garmin-app\WatchFaceFirst\source\WatchFaceFirstView.mc"; @line = 28; @symbol_functiondef = [onLayout,28,13,21]; @symbol_param<0> = [dc,28,22,24]; @symbol_param<0>_type<0> = [Dc,28,28,30]; ]
+    function onLayout(dc as Dc) as Void {
+C__dev_first_garmin_app_WatchFaceFirst_source_WatchFaceFirstView_mc_28_40_30_4_start:
+[ "C:\dev\first-garmin-app\WatchFaceFirst\source\WatchFaceFirstView.mc" 29 8 ]
+        %tmp.1 = self;
+        symbol [ setLayout %tmp.2 29 8 17 ];
+        %tmp.2 = getv function %tmp.1 :setLayout;
+        symbol [ Rez %tmp.4 29 18 21 ];
+        %tmp.4 = getv ? :Rez;
+        symbol [ Layouts %tmp.5 29 22 29 ];
+        %tmp.5 = getv %tmp.4 :Layouts;
+        symbol [ WatchFace %tmp.6 29 30 39 ];
+        %tmp.6 = getv function %tmp.5 :WatchFace;
+        %tmp.7 = lgetv %dc;
+        symbol [ dc %tmp.7 29 40 42 ];
+        %tmp.8 = invoke %tmp.5 %tmp.6(%tmp.7);
+        invoke %tmp.1 %tmp.2(%tmp.8);
+C__dev_first_garmin_app_WatchFaceFirst_source_WatchFaceFirstView_mc_28_40_30_4_stop:
+    }
+    [ @file = "C:\dev\first-garmin-app\WatchFaceFirst\source\WatchFaceFirstView.mc"; @line = 35; @symbol_functiondef = [onShow,35,13,19]; ]
+    function onShow() as Void {
+    }
+    [ @file = "C:\dev\first-garmin-app\WatchFaceFirst\source\WatchFaceFirstView.mc"; @line = 39; @symbol_functiondef = [onUpdate,39,13,21]; @symbol_param<0> = [dc,39,22,24]; @symbol_param<0>_type<0> = [Dc,39,28,30]; ]
+    function onUpdate(dc as Dc) as Void {
+C__dev_first_garmin_app_WatchFaceFirst_source_WatchFaceFirstView_mc_39_40_58_4_start:
+[ "C:\dev\first-garmin-app\WatchFaceFirst\source\WatchFaceFirstView.mc" 41 8 ]
+        symbol [ View %tmp.2 41 8 12 ];
+        %tmp.2 = getv ? :View;
+        symbol [ onUpdate %tmp.3 41 13 21 ];
+        %tmp.3 = getv function %tmp.2 :onUpdate;
+        %tmp.4 = lgetv %dc;
+        symbol [ dc %tmp.4 41 22 24 ];
+        invoke %tmp.2 %tmp.3(%tmp.4);
+[ "C:\dev\first-garmin-app\WatchFaceFirst\source\WatchFaceFirstView.mc" 42 8 ]
+        [ "C__dev_first_garmin_app_WatchFaceFirst_source_WatchFaceFirstView_mc_39_40_58_4_start" "C__dev_first_garmin_app_WatchFaceFirst_source_WatchFaceFirstView_mc_39_40_58_4_stop" ]
+        %clockTime.1 = local;
+        symbol [ clockTime %clockTime.1 42 12 21 ];
+        symbol [ System %tmp.5 42 24 30 ];
+        %tmp.5 = getm $.Toybox.System;
+        symbol [ getClockTime %tmp.6 42 31 43 ];
+        %tmp.6 = getv function %tmp.5 :getClockTime;
+        %tmp.7 = invoke %tmp.5 %tmp.6();
+        lputv %clockTime.1 %tmp.7;
+        symbol [ clockTime %clockTime.1 42 12 21 ];
+[ "C:\dev\first-garmin-app\WatchFaceFirst\source\WatchFaceFirstView.mc" 43 8 ]
+        [ "C__dev_first_garmin_app_WatchFaceFirst_source_WatchFaceFirstView_mc_39_40_58_4_start" "C__dev_first_garmin_app_WatchFaceFirst_source_WatchFaceFirstView_mc_39_40_58_4_stop" ]
+        %timeString.2 = local;
+        symbol [ timeString %timeString.2 43 12 22 ];
+        symbol [ Lang %tmp.8 43 25 29 ];
+        %tmp.8 = getm $.Toybox.Lang;
+        symbol [ format %tmp.9 43 30 36 ];
+        %tmp.9 = getv function %tmp.8 :format;
+        %tmp.10 = "$1$:$2$";
+        %tmp.11 = newa 2;
+        %tmp.12 = lgetv %clockTime.1;
+        symbol [ clockTime %tmp.12 43 49 58 ];
+        symbol [ hour %tmp.13 43 59 63 ];
+        %tmp.13 = getv %tmp.12 :hour;
+        %tmp.14 = dup %tmp.11;
+        %tmp.15 = aputv %tmp.14 0 %tmp.13;
+        %tmp.16 = lgetv %clockTime.1;
+        symbol [ clockTime %tmp.16 43 65 74 ];
+        symbol [ min %tmp.17 43 75 78 ];
+        %tmp.17 = getv %tmp.16 :min;
+        symbol [ format %tmp.18 43 79 85 ];
+        %tmp.18 = getv function %tmp.17 :format;
+        %tmp.19 = "%02d";
+        %tmp.20 = invoke %tmp.17 %tmp.18(%tmp.19);
+        %tmp.21 = dup %tmp.15;
+        %tmp.22 = aputv %tmp.21 1 %tmp.20;
+        %tmp.23 = invoke %tmp.8 %tmp.9(%tmp.10, %tmp.22);
+        lputv %timeString.2 %tmp.23;
+        symbol [ timeString %timeString.2 43 12 22 ];
+[ "C:\dev\first-garmin-app\WatchFaceFirst\source\WatchFaceFirstView.mc" 44 8 ]
+        [ "C__dev_first_garmin_app_WatchFaceFirst_source_WatchFaceFirstView_mc_39_40_58_4_start" "C__dev_first_garmin_app_WatchFaceFirst_source_WatchFaceFirstView_mc_39_40_58_4_stop" ]
+        %timeView.3 = local;
+        symbol [ timeView %timeView.3 44 12 20 ];
+        symbol [ View %tmp.25 44 23 27 ];
+        %tmp.25 = getv ? :View;
+        symbol [ findDrawableById %tmp.26 44 28 44 ];
+        %tmp.26 = getv function %tmp.25 :findDrawableById;
+        %tmp.27 = "TimeLabel";
+        %tmp.28 = invoke %tmp.25 %tmp.26(%tmp.27);
+        %tmp.29 = as %tmp.28 Text;
+        symbol [ Text %tmp.29 44 61 65 ];
+        lputv %timeView.3 %tmp.29;
+        symbol [ timeView %timeView.3 44 12 20 ];
+[ "C:\dev\first-garmin-app\WatchFaceFirst\source\WatchFaceFirstView.mc" 45 8 ]
+        [ "C__dev_first_garmin_app_WatchFaceFirst_source_WatchFaceFirstView_mc_39_40_58_4_start" "C__dev_first_garmin_app_WatchFaceFirst_source_WatchFaceFirstView_mc_39_40_58_4_stop" ]
+        %batteryView.4 = local;
+        symbol [ batteryView %batteryView.4 45 12 23 ];
+        symbol [ View %tmp.31 45 26 30 ];
+        %tmp.31 = getv ? :View;
+        symbol [ findDrawableById %tmp.32 45 31 47 ];
+        %tmp.32 = getv function %tmp.31 :findDrawableById;
+        %tmp.33 = "BatteryLabel";
+        %tmp.34 = invoke %tmp.31 %tmp.32(%tmp.33);
+        %tmp.35 = as %tmp.34 Text;
+        symbol [ Text %tmp.35 45 67 71 ];
+        lputv %batteryView.4 %tmp.35;
+        symbol [ batteryView %batteryView.4 45 12 23 ];
+[ "C:\dev\first-garmin-app\WatchFaceFirst\source\WatchFaceFirstView.mc" 46 8 ]
+        [ "C__dev_first_garmin_app_WatchFaceFirst_source_WatchFaceFirstView_mc_39_40_58_4_start" "C__dev_first_garmin_app_WatchFaceFirst_source_WatchFaceFirstView_mc_39_40_58_4_stop" ]
+        %heartRateView.5 = local;
+        symbol [ heartRateView %heartRateView.5 46 12 25 ];
+        symbol [ View %tmp.37 46 28 32 ];
+        %tmp.37 = getv ? :View;
+        symbol [ findDrawableById %tmp.38 46 33 49 ];
+        %tmp.38 = getv function %tmp.37 :findDrawableById;
+        %tmp.39 = "HeartRateLabel";
+        %tmp.40 = invoke %tmp.37 %tmp.38(%tmp.39);
+        %tmp.41 = as %tmp.40 Text;
+        symbol [ Text %tmp.41 46 71 75 ];
+        lputv %heartRateView.5 %tmp.41;
+        symbol [ heartRateView %heartRateView.5 46 12 25 ];
+[ "C:\dev\first-garmin-app\WatchFaceFirst\source\WatchFaceFirstView.mc" 47 8 ]
+        [ "C__dev_first_garmin_app_WatchFaceFirst_source_WatchFaceFirstView_mc_39_40_58_4_start" "C__dev_first_garmin_app_WatchFaceFirst_source_WatchFaceFirstView_mc_39_40_58_4_stop" ]
+        %batteryStatus.6 = local;
+        symbol [ batteryStatus %batteryStatus.6 47 12 25 ];
+        %tmp.42 = self;
+        symbol [ batteryStatus %tmp.43 47 28 41 ];
+        %tmp.43 = getv function %tmp.42 :batteryStatus;
+        %tmp.44 = invoke %tmp.42 %tmp.43();
+        lputv %batteryStatus.6 %tmp.44;
+        symbol [ batteryStatus %batteryStatus.6 47 12 25 ];
+[ "C:\dev\first-garmin-app\WatchFaceFirst\source\WatchFaceFirstView.mc" 48 8 ]
+        [ "C__dev_first_garmin_app_WatchFaceFirst_source_WatchFaceFirstView_mc_39_40_58_4_start" "C__dev_first_garmin_app_WatchFaceFirst_source_WatchFaceFirstView_mc_39_40_58_4_stop" ]
+        %batteryString.7 = local;
+        symbol [ batteryString %batteryString.7 48 12 25 ];
+        %tmp.45 = lgetv %batteryStatus.6;
+        symbol [ batteryStatus %tmp.45 48 28 41 ];
+        %tmp.46 = "%";
+        %tmp.47 = add %tmp.45 %tmp.46;
+        lputv %batteryString.7 %tmp.47;
+        symbol [ batteryString %batteryString.7 48 12 25 ];
+[ "C:\dev\first-garmin-app\WatchFaceFirst\source\WatchFaceFirstView.mc" 49 8 ]
+        [ "C__dev_first_garmin_app_WatchFaceFirst_source_WatchFaceFirstView_mc_39_40_58_4_start" "C__dev_first_garmin_app_WatchFaceFirst_source_WatchFaceFirstView_mc_39_40_58_4_stop" ]
+        %heartRate.8 = local;
+        symbol [ heartRate %heartRate.8 49 12 21 ];
+        %tmp.48 = self;
+        symbol [ getHeartRate %tmp.49 49 24 36 ];
+        %tmp.49 = getv function %tmp.48 :getHeartRate;
+        %tmp.50 = invoke %tmp.48 %tmp.49();
+        lputv %heartRate.8 %tmp.50;
+        symbol [ heartRate %heartRate.8 49 12 21 ];
+[ "C:\dev\first-garmin-app\WatchFaceFirst\source\WatchFaceFirstView.mc" 51 8 ]
+        %tmp.51 = lgetv %batteryView.4;
+        symbol [ batteryView %tmp.51 51 8 19 ];
+        symbol [ setText %tmp.52 51 20 27 ];
+        %tmp.52 = getv function %tmp.51 :setText;
+        %tmp.53 = lgetv %batteryString.7;
+        symbol [ batteryString %tmp.53 51 28 41 ];
+        invoke %tmp.51 %tmp.52(%tmp.53);
+[ "C:\dev\first-garmin-app\WatchFaceFirst\source\WatchFaceFirstView.mc" 52 8 ]
+        %tmp.54 = lgetv %timeView.3;
+        symbol [ timeView %tmp.54 52 8 16 ];
+        symbol [ setText %tmp.55 52 17 24 ];
+        %tmp.55 = getv function %tmp.54 :setText;
+        %tmp.56 = lgetv %timeString.2;
+        symbol [ timeString %tmp.56 52 25 35 ];
+        invoke %tmp.54 %tmp.55(%tmp.56);
+[ "C:\dev\first-garmin-app\WatchFaceFirst\source\WatchFaceFirstView.mc" 53 8 ]
+        %tmp.57 = lgetv %heartRateView.5;
+        symbol [ heartRateView %tmp.57 53 8 21 ];
+        symbol [ setText %tmp.58 53 22 29 ];
+        %tmp.58 = getv function %tmp.57 :setText;
+        %tmp.59 = lgetv %heartRate.8;
+        symbol [ heartRate %tmp.59 53 30 39 ];
+        symbol [ toString %tmp.60 53 40 48 ];
+        %tmp.60 = getv function %tmp.59 :toString;
+        %tmp.61 = invoke %tmp.59 %tmp.60();
+        invoke %tmp.57 %tmp.58(%tmp.61);
+[ "C:\dev\first-garmin-app\WatchFaceFirst\source\WatchFaceFirstView.mc" 54 8 ]
+        [ "C__dev_first_garmin_app_WatchFaceFirst_source_WatchFaceFirstView_mc_39_40_58_4_start" "C__dev_first_garmin_app_WatchFaceFirst_source_WatchFaceFirstView_mc_39_40_58_4_stop" ]
+        %IconBattery.9 = local;
+        symbol [ IconBattery %IconBattery.9 54 12 23 ];
+        symbol [ Application %tmp.63 54 27 38 ];
+        %tmp.63 = getv ? :Application;
+        symbol [ loadResource %tmp.64 54 39 51 ];
+        %tmp.64 = getv function %tmp.63 :loadResource;
+        symbol [ Rez %tmp.66 54 52 55 ];
+        %tmp.66 = getv ? :Rez;
+        symbol [ Drawables %tmp.67 54 56 65 ];
+        %tmp.67 = getv %tmp.66 :Drawables;
+        symbol [ batteryIcon %tmp.68 54 66 77 ];
+        %tmp.68 = getv %tmp.67 :batteryIcon;
+        %tmp.69 = invoke %tmp.63 %tmp.64(%tmp.68);
+        %tmp.70 = as %tmp.69 BitmapResource;
+        symbol [ BitmapResource %tmp.70 54 82 96 ];
+        lputv %IconBattery.9 %tmp.70;
+        symbol [ IconBattery %IconBattery.9 54 12 23 ];
+[ "C:\dev\first-garmin-app\WatchFaceFirst\source\WatchFaceFirstView.mc" 55 8 ]
+        %tmp.71 = lgetv %dc;
+        symbol [ dc %tmp.71 55 8 10 ];
+        symbol [ drawBitmap %tmp.72 55 11 21 ];
+        %tmp.72 = getv function %tmp.71 :drawBitmap;
+        %tmp.73 = 60;
+        %tmp.74 = 147;
+        %tmp.75 = lgetv %IconBattery.9;
+        symbol [ IconBattery %tmp.75 55 31 42 ];
+        invoke %tmp.71 %tmp.72(%tmp.73, %tmp.74, %tmp.75);
+C__dev_first_garmin_app_WatchFaceFirst_source_WatchFaceFirstView_mc_39_40_58_4_stop:
+    }
+    [ @file = "C:\dev\first-garmin-app\WatchFaceFirst\source\WatchFaceFirstView.mc"; @line = 63; @symbol_functiondef = [onHide,63,13,19]; ]
+    function onHide() as Void {
+    }
+    [ @file = "C:\dev\first-garmin-app\WatchFaceFirst\source\WatchFaceFirstView.mc"; @line = 67; @symbol_functiondef = [onExitSleep,67,13,24]; ]
+    function onExitSleep() as Void {
+    }
+    [ @file = "C:\dev\first-garmin-app\WatchFaceFirst\source\WatchFaceFirstView.mc"; @line = 71; @symbol_functiondef = [onEnterSleep,71,13,25]; ]
+    function onEnterSleep() as Void {
+    }
+}
+[ @file = "C:\dev\first-garmin-app\WatchFaceFirst\source\WatchFaceFirstView.mc"; @line = 1; ]
+<init> {
+}
